@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">RPG</string>
+
+    <string name="name">Name</string>
+
+    <string name="start">Start</string>
+
+    <string name="inputAtt">Input your attributes</string>
+
+    <string name="strength">Strength</string>
+    <string name="intelligence">Intelligence</string>
+    <string name="wisdom">Wisdom</string>
+    <string name="charisma">Charisma</string>
+    <string name="constitution">Constitution</string>
+    <string name="dexterity">Dexterity</string>
+
+    <string name="box">(%1$s)</string>
+
+
+    <string-array name="sp_class_options">
+        <item>Select Class</item>
+        <item>Warrior</item>
+        <item>Mage</item>
+        <item>Rogue</item>
+    </string-array>
+
+    <string-array name="sp_breed_options">
+        <item>Select breed</item>
+        <item>Dwarf</item>
+        <item>Human</item>
+        <item>Orc</item>
+    </string-array>
+
+</resources>

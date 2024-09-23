@@ -1,0 +1,265 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#d9d9d9"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/inputAtt"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_points"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:text="27"
+        android:textColor="@color/black"
+        android:textSize="35sp" />
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:alignmentMode="alignMargins"
+        android:columnCount="3"
+        android:padding="10dp"
+        android:rowCount="6">
+
+        <!-- Strength -->
+        <TextView
+            android:id="@+id/tv_strength"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:layout_columnWeight="1"
+            android:gravity="center"
+            android:text="@string/strength"
+            android:textColor="@color/black"
+            android:textSize="25sp" />
+
+        <SeekBar
+            android:id="@+id/sb_strength"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center_vertical"
+            android:max="15"
+            android:min="8" />
+
+        <TextView
+            android:id="@+id/tv_strength_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_column="2"
+            android:layout_gravity="center"
+            android:text="@string/box"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+        <!-- Dexterity -->
+        <TextView
+            android:id="@+id/tv_dexterity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:layout_columnWeight="1"
+            android:gravity="center"
+            android:text="@string/dexterity"
+            android:textColor="@color/black"
+            android:textSize="25sp" />
+
+        <SeekBar
+            android:id="@+id/sb_dexterity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center_vertical"
+            android:max="15"
+            android:min="8" />
+
+        <TextView
+            android:id="@+id/tv_dexterity_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="1"
+            android:layout_column="2"
+            android:layout_gravity="center"
+            android:text="@string/box"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+        <!-- Constitution -->
+        <TextView
+            android:id="@+id/tv_constitution"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_row="2"
+            android:layout_column="0"
+            android:layout_columnWeight="1"
+            android:gravity="center"
+            android:text="@string/constitution"
+            android:textColor="@color/black"
+            android:textSize="25sp" />
+
+        <SeekBar
+            android:id="@+id/sb_constitution"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_row="2"
+            android:layout_column="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center_vertical"
+            android:max="15"
+            android:min="8" />
+
+        <TextView
+            android:id="@+id/tv_constitution_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="2"
+            android:layout_column="2"
+            android:layout_gravity="center"
+            android:text="@string/box"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+        <!-- Intelligence -->
+        <TextView
+            android:id="@+id/tv_intelligence"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_row="3"
+            android:layout_column="0"
+            android:layout_columnWeight="1"
+            android:gravity="center"
+            android:text="@string/intelligence"
+            android:textColor="@color/black"
+            android:textSize="25sp" />
+
+        <SeekBar
+            android:id="@+id/sb_intelligence"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_row="3"
+            android:layout_column="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center_vertical"
+            android:max="15"
+            android:min="8" />
+
+        <TextView
+            android:id="@+id/tv_intelligence_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="3"
+            android:layout_column="2"
+            android:layout_gravity="center"
+            android:text="@string/box"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+        <!-- Wisdom -->
+        <TextView
+            android:id="@+id/tv_wisdom"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_row="4"
+            android:layout_column="0"
+            android:layout_columnWeight="1"
+            android:gravity="center"
+            android:text="@string/wisdom"
+            android:textColor="@color/black"
+            android:textSize="25sp" />
+
+        <SeekBar
+            android:id="@+id/sb_wisdom"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_row="4"
+            android:layout_column="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center_vertical"
+            android:max="15"
+            android:min="8" />
+
+        <TextView
+            android:id="@+id/tv_wisdom_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="4"
+            android:layout_column="2"
+            android:layout_gravity="center"
+            android:text="@string/box"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+        <!-- Charisma -->
+        <TextView
+            android:id="@+id/tv_charisma"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_row="5"
+            android:layout_column="0"
+            android:layout_columnWeight="1"
+            android:gravity="center"
+            android:text="@string/charisma"
+            android:textColor="@color/black"
+            android:textSize="25sp" />
+
+        <SeekBar
+            android:id="@+id/sb_charisma"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_row="5"
+            android:layout_column="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center_vertical"
+            android:max="15"
+            android:min="8" />
+
+        <TextView
+            android:id="@+id/tv_charisma_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="5"
+            android:layout_column="2"
+            android:layout_gravity="center"
+            android:text="@string/box"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+    </GridLayout>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Use preset"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/purple_200"
+        android:text="next"/>
+
+</LinearLayout>
