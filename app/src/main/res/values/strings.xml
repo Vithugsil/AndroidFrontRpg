@@ -5,6 +5,8 @@
 
     <string name="start">Start</string>
 
+    <string name="distributionPointsTitle">Attributes distribution</string>
+
     <string name="inputAtt">Input your attributes</string>
 
     <string name="strength">Strength</string>
@@ -14,8 +16,12 @@
     <string name="constitution">Constitution</string>
     <string name="dexterity">Dexterity</string>
 
-    <string name="box">(%1$s)</string>
+    <string name="initialValue">8</string>
 
+    <string name="plus">+</string>
+    <string name="minus">-</string>
+
+    <string name="box">(%1$s)</string>
 
     <string-array name="sp_class_options">
         <item>Select Class</item>
@@ -26,9 +32,24 @@
 
     <string-array name="sp_breed_options">
         <item>Select breed</item>
-        <item>Dwarf</item>
+        <item>Dragonborn</item>
+        <item>Dwarf Hill</item>
+        <item>Dwarf Mountain</item>
+        <item>Elf Drow</item>
+        <item>Elf Forest</item>
+        <item>Elf High</item>
+        <item>Gnome</item>
+        <item>Gnome Forest</item>
+        <item>Gnome Rock</item>
+        <item>Half Elf</item>
+        <item>Halfling</item>
+        <item>Halfling Lightfoot</item>
+        <item>Halfling Stout</item>
+        <item>Half Orc</item>
         <item>Human</item>
-        <item>Orc</item>
+        <item>Tiefling</item>
     </string-array>
+
+    <string name="erroMessage">You must select a breed and class to proceed</string>
 
 </resources>

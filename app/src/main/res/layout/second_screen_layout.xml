@@ -1,265 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#d9d9d9"
-    android:gravity="center"
-    android:orientation="vertical">
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="16dp">
 
+    <!-- Exibir o nome do personagem -->
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/characterName"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/inputAtt"
-        android:textAlignment="center"
+        android:layout_marginBottom="16dp"
+        android:text="Nome do Personagem"
         android:textColor="@color/black"
-        android:textSize="30sp"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <!-- Exibir os pontos restantes -->
+    <TextView
+        android:id="@+id/remainingPoints"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="Pontos Restantes: 27"
+        android:textColor="@color/black"
+        android:textSize="18sp"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/tv_points"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/white"
-        android:gravity="center"
-        android:text="27"
+        android:layout_marginBottom="24dp"
+        android:text="@string/distributionPointsTitle"
         android:textColor="@color/black"
-        android:textSize="35sp" />
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
-    <GridLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:alignmentMode="alignMargins"
-        android:columnCount="3"
-        android:padding="10dp"
-        android:rowCount="6">
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:orientation="horizontal">
 
-        <!-- Strength -->
         <TextView
-            android:id="@+id/tv_strength"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_row="0"
-            android:layout_column="0"
-            android:layout_columnWeight="1"
-            android:gravity="center"
+            android:layout_weight="1"
             android:text="@string/strength"
-            android:textColor="@color/black"
-            android:textSize="25sp" />
+            android:textSize="18sp" />
 
-        <SeekBar
-            android:id="@+id/sb_strength"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_row="0"
-            android:layout_column="1"
-            android:layout_columnWeight="1"
-            android:layout_gravity="center_vertical"
-            android:max="15"
-            android:min="8" />
-
-        <TextView
-            android:id="@+id/tv_strength_box"
+        <Button
+            android:id="@+id/btnMinusStrength"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_row="0"
-            android:layout_column="2"
-            android:layout_gravity="center"
-            android:text="@string/box"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:text="-" />
 
-        <!-- Dexterity -->
         <TextView
-            android:id="@+id/tv_dexterity"
-            android:layout_width="0dp"
+            android:id="@+id/txtStrength"
+            android:layout_width="30dp"
             android:layout_height="wrap_content"
-            android:layout_row="1"
-            android:layout_column="0"
-            android:layout_columnWeight="1"
+            android:layout_marginHorizontal="10dp"
             android:gravity="center"
-            android:text="@string/dexterity"
-            android:textColor="@color/black"
-            android:textSize="25sp" />
+            android:text="@string/initialValue"
+            android:textSize="18sp" />
 
-        <SeekBar
-            android:id="@+id/sb_dexterity"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_row="1"
-            android:layout_column="1"
-            android:layout_columnWeight="1"
-            android:layout_gravity="center_vertical"
-            android:max="15"
-            android:min="8" />
-
-        <TextView
-            android:id="@+id/tv_dexterity_box"
+        <Button
+            android:id="@+id/btnPlusStrength"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_row="1"
-            android:layout_column="2"
-            android:layout_gravity="center"
-            android:text="@string/box"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:text="@string/plus" />
+    </LinearLayout>
 
-        <!-- Constitution -->
-        <TextView
-            android:id="@+id/tv_constitution"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_row="2"
-            android:layout_column="0"
-            android:layout_columnWeight="1"
-            android:gravity="center"
-            android:text="@string/constitution"
-            android:textColor="@color/black"
-            android:textSize="25sp" />
-
-        <SeekBar
-            android:id="@+id/sb_constitution"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_row="2"
-            android:layout_column="1"
-            android:layout_columnWeight="1"
-            android:layout_gravity="center_vertical"
-            android:max="15"
-            android:min="8" />
-
-        <TextView
-            android:id="@+id/tv_constitution_box"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_row="2"
-            android:layout_column="2"
-            android:layout_gravity="center"
-            android:text="@string/box"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
-
-        <!-- Intelligence -->
-        <TextView
-            android:id="@+id/tv_intelligence"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_row="3"
-            android:layout_column="0"
-            android:layout_columnWeight="1"
-            android:gravity="center"
-            android:text="@string/intelligence"
-            android:textColor="@color/black"
-            android:textSize="25sp" />
-
-        <SeekBar
-            android:id="@+id/sb_intelligence"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_row="3"
-            android:layout_column="1"
-            android:layout_columnWeight="1"
-            android:layout_gravity="center_vertical"
-            android:max="15"
-            android:min="8" />
-
-        <TextView
-            android:id="@+id/tv_intelligence_box"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_row="3"
-            android:layout_column="2"
-            android:layout_gravity="center"
-            android:text="@string/box"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
-
-        <!-- Wisdom -->
-        <TextView
-            android:id="@+id/tv_wisdom"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_row="4"
-            android:layout_column="0"
-            android:layout_columnWeight="1"
-            android:gravity="center"
-            android:text="@string/wisdom"
-            android:textColor="@color/black"
-            android:textSize="25sp" />
-
-        <SeekBar
-            android:id="@+id/sb_wisdom"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_row="4"
-            android:layout_column="1"
-            android:layout_columnWeight="1"
-            android:layout_gravity="center_vertical"
-            android:max="15"
-            android:min="8" />
-
-        <TextView
-            android:id="@+id/tv_wisdom_box"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_row="4"
-            android:layout_column="2"
-            android:layout_gravity="center"
-            android:text="@string/box"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
-
-        <!-- Charisma -->
-        <TextView
-            android:id="@+id/tv_charisma"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_row="5"
-            android:layout_column="0"
-            android:layout_columnWeight="1"
-            android:gravity="center"
-            android:text="@string/charisma"
-            android:textColor="@color/black"
-            android:textSize="25sp" />
-
-        <SeekBar
-            android:id="@+id/sb_charisma"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_row="5"
-            android:layout_column="1"
-            android:layout_columnWeight="1"
-            android:layout_gravity="center_vertical"
-            android:max="15"
-            android:min="8" />
-
-        <TextView
-            android:id="@+id/tv_charisma_box"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_row="5"
-            android:layout_column="2"
-            android:layout_gravity="center"
-            android:text="@string/box"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
-
-    </GridLayout>
-
-    <CheckBox
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Use preset"
-        android:layout_gravity="center"/>
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/dexterity"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btnMinusDexterity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/minus" />
+
+        <TextView
+            android:id="@+id/txtDexterity"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:gravity="center"
+            android:text="@string/initialValue"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btnPlusDexterity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/plus" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/constitution"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btnMinusConstitution"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/minus" />
+
+        <TextView
+            android:id="@+id/txtConstitution"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:gravity="center"
+            android:text="@string/initialValue"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btnPlusConstitution"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/plus" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/intelligence"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btnMinusIntelligence"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/minus" />
+
+        <TextView
+            android:id="@+id/txtIntelligence"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:gravity="center"
+            android:text="@string/initialValue"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btnPlusIntelligence"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/plus" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/wisdom"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btnMinusWisdom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/minus" />
+
+        <TextView
+            android:id="@+id/txtWisdom"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:gravity="center"
+            android:text="@string/initialValue"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btnPlusWisdom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/plus" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/charisma"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btnMinusCharisma"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/minus" />
+
+        <TextView
+            android:id="@+id/txtCharisma"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:gravity="center"
+            android:text="@string/initialValue"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btnPlusCharisma"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/plus" />
+    </LinearLayout>
 
     <Button
-        android:layout_width="wrap_content"
+        android:id="@+id/createMyCharacter"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:backgroundTint="@color/purple_200"
-        android:text="next"/>
+        android:layout_marginTop="32dp"
+        android:backgroundTint="#8C2C9B"
+        android:text="Criar Personagem"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
 
 </LinearLayout>
