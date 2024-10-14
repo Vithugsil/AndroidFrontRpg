@@ -24,8 +24,6 @@ class MainActivity : ComponentActivity() {
     //Variavel que armazena a posição de cada raça no spinner
     private var breedPosition: Int = 0
 
-    var character: Character? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_layout)  // Define o layout da atividade
@@ -84,6 +82,7 @@ class MainActivity : ComponentActivity() {
     // Configura o botão de início para iniciar a segunda atividade ao ser clicado
     private fun setupStartButton() {
         btnStart.setOnClickListener {
+            val selectedClass = spClass.selectedItemPosition
             if (name.text.toString().isEmpty()) {
                 Toast.makeText(
                     this,
@@ -107,6 +106,7 @@ class MainActivity : ComponentActivity() {
             val intent = Intent(this, SecondActivity::class.java)
             intent.putExtra("characterName", name.text.toString())
             intent.putExtra("characterBreed", breedPosition)
+            intent.putExtra("characterClass", Characterbuilder.selectClass(selectedClass))
             startActivity(intent)  // Inicia a segunda atividade
         }
     }

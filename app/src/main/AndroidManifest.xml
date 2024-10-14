@@ -15,7 +15,6 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
             android:theme="@style/Theme.RPG">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,13 +23,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".SecondActivity">
-            
+        <activity android:name=".SecondActivity"/>
 
-        </activity>
+        <activity android:name=".ResumeActivity"/>
 
-        <activity android:name=".ResumeActivity">
-        </activity>
+
     </application>
 
 </manifest>

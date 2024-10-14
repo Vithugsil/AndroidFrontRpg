@@ -28,6 +28,8 @@
         <item>Warrior</item>
         <item>Mage</item>
         <item>Rogue</item>
+        <item>Cleric</item>
+        <item>Druid</item>
     </string-array>
 
     <string-array name="sp_breed_options">
@@ -51,5 +53,10 @@
     </string-array>
 
     <string name="erroMessage">You must select a breed and class to proceed</string>
+    <string name="vida_total">Vida total</string>
+    <string name="raca">Raça</string>
+    <string name="finish">Finish</string>
+    <string name="classe">Classe</string>
+    <string name="nome">Nome</string>
 
 </resources>

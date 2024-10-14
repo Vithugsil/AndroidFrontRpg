@@ -1,6 +1,6 @@
 package com.example.rpg
 
-import MyCharacter
+
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -8,7 +8,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import org.example.builder.Characterbuilder
-import org.example.entities.Modifiers
+import org.example.enums.Attributes
 import org.example.entities.DistributionPoints as dp
 
 class SecondActivity : ComponentActivity() {
@@ -28,6 +28,7 @@ class SecondActivity : ComponentActivity() {
         // Recebe o nome e a raça do personagem da atividade anterior
         val characterName = intent.getStringExtra("characterName") ?: "Unknown"
         val characterBreed = intent.getIntExtra("characterBreed", 0)
+        val characterClass = intent.getStringExtra("characterClass") ?: "Unknown"
 
         // Cria o personagem
         val character = Characterbuilder.build(characterName, characterBreed)
@@ -67,219 +68,180 @@ class SecondActivity : ComponentActivity() {
         val txtCharisma = findViewById<TextView>(R.id.txtCharisma)
         txtCharisma.text = charisma.toString()
 
-        // Botões de mais
+        // Botões de Força
         btnStrengthPlus.setOnClickListener {
-            if (strength in 8..15) {
-                val cost = Modifiers.modifierCost(strength)
-                if (dp.totalPoints - cost >= 0) {
-                    strength++
-                    txtStrength.text = strength.toString()
-                    dp.distributePoints(character, dp.verifyChoice(0), strength)
-                    dp.totalPoints -= cost
-                    updateRemainingPoints()
-                } else {
-                    showToast("not enough point")
-                }
+            if (strength + 1 !in 8..15) {
+                verifyIfValueIsLowerThanEight(strength + 1)
             } else {
-                showToast("The value cannot be higher than 15")
+                if (dp.totalPoints == 0){
+                    showToast("You don't have any points to distribute")
+                    return@setOnClickListener
+                }
+                strength++
+                txtStrength.text = strength.toString()
+                dp.distributePoints(character, Attributes.STRENGTH, strength)
+                updateRemainingPoints()
             }
         }
 
-        btnDexterityPlus.setOnClickListener {
-            if (dexterity in 8..15) {
-                val cost = Modifiers.modifierCost(dexterity)
-                if (dp.totalPoints - cost >= 0) {
-                    dexterity++
-                    txtDexterity.text = dexterity.toString()
-                    dp.distributePoints(character, dp.verifyChoice(1), dexterity)
-                    dp.totalPoints -= cost
-                    updateRemainingPoints()
-                } else {
-                    showToast("not enough point")
-                }
-            } else {
-                showToast("The value cannot be higher than 15")
-            }
-        }
-
-        btnConstitutionPlus.setOnClickListener {
-            if (constitution in 8..15) {
-                val cost = Modifiers.modifierCost(constitution)
-                if (dp.totalPoints - cost >= 0) {
-                    constitution++
-                    txtConstitution.text = constitution.toString()
-                    dp.distributePoints(character, dp.verifyChoice(2), constitution)
-                    dp.totalPoints -= cost
-                    updateRemainingPoints()
-                } else {
-                    showToast("not enough point")
-                }
-            } else {
-                showToast("The value cannot be higher than 15")
-            }
-        }
-
-        btnIntelligencePlus.setOnClickListener {
-            if (intelligence in 8..15) {
-                val cost = Modifiers.modifierCost(intelligence)
-                if (dp.totalPoints - cost >= 0) {
-                    intelligence++
-                    txtIntelligence.text = intelligence.toString()
-                    dp.distributePoints(character, dp.verifyChoice(3), intelligence)
-                    dp.totalPoints -= cost
-                    updateRemainingPoints()
-                } else {
-                    showToast("not enough point")
-                }
-            } else {
-                showToast("The value cannot be higher than 15")
-            }
-        }
-
-        btnWisdomPlus.setOnClickListener {
-            if (wisdom in 8..15) {
-                val cost = Modifiers.modifierCost(wisdom)
-                if (dp.totalPoints - cost >= 0) {
-                    wisdom++
-                    txtWisdom.text = wisdom.toString()
-                    dp.distributePoints(character, dp.verifyChoice(4), wisdom)
-                    dp.totalPoints -= cost
-                    updateRemainingPoints()
-                } else {
-                    showToast("not enough point")
-                }
-            } else {
-                showToast("The value cannot be higher than 15")
-            }
-        }
-
-        btnCharismaPlus.setOnClickListener {
-            if (charisma in 8..15) {
-                val cost = Modifiers.modifierCost(charisma)
-                if (dp.totalPoints - cost >= 0) {
-                    charisma++
-                    txtCharisma.text = charisma.toString()
-                    dp.distributePoints(character, dp.verifyChoice(5), charisma)
-                    dp.totalPoints -= cost
-                    updateRemainingPoints()
-                } else {
-                    showToast("not enough point")
-                }
-            } else {
-                showToast("The value cannot be higher than 15")
-            }
-        }
-
-        // Botões de menos
         btnStrengthMinus.setOnClickListener {
-            if (strength in 8..15) {
-                if (strength - 1 < 8) {
-                    showToast("The value cannot be lower than 8")
-                } else {
-                    val refund = Modifiers.modifierCost(strength)
-                    strength--
-                    txtStrength.text = strength.toString()
-                    dp.distributePoints(character, dp.verifyChoice(0), strength)
-                    dp.totalPoints += refund
-                    updateRemainingPoints()
-                }
+            if (strength - 1 !in 8..15) {
+                verifyIfValueIsLowerThanEight(strength - 1)
             } else {
-                showToast("The value cannot be lower than 8")
+                dp.refundPoints(character, Attributes.STRENGTH, strength)
+                strength--
+                txtStrength.text = strength.toString()
+                updateRemainingPoints()
+            }
+        }
+
+        // Botões de Destreza
+        btnDexterityPlus.setOnClickListener {
+            if (dexterity + 1 !in 8..15) {
+                verifyIfValueIsLowerThanEight(dexterity + 1)
+            } else {
+                if (dp.totalPoints == 0){
+                    showToast("You don't have any points to distribute")
+                    return@setOnClickListener
+                }
+                dexterity++
+                txtDexterity.text = dexterity.toString()
+                dp.distributePoints(character, Attributes.DEXTERITY, dexterity)
+                updateRemainingPoints()
             }
         }
 
         btnDexterityMinus.setOnClickListener {
-            if (dexterity in 8..15) {
-                if (dexterity - 1 < 8) {
-                    showToast("The value cannot be lower than 8")
-                } else {
-                    val refund = Modifiers.modifierCost(dexterity)
-                    dexterity--
-                    txtDexterity.text = dexterity.toString()
-                    dp.distributePoints(character, dp.verifyChoice(1), dexterity)
-                    dp.totalPoints += refund
-                    updateRemainingPoints()
-                }
+            if (dexterity - 1 !in 8..15) {
+                verifyIfValueIsLowerThanEight(dexterity - 1)
             } else {
-                showToast("The value cannot be lower than 8")
+                dp.refundPoints(character, Attributes.DEXTERITY, dexterity)
+                dexterity--
+                txtDexterity.text = dexterity.toString()
+                updateRemainingPoints()
+            }
+        }
+
+        //botões de constituição
+        btnConstitutionPlus.setOnClickListener {
+            if (constitution + 1 !in 8..15) {
+                verifyIfValueIsLowerThanEight(constitution + 1)
+            } else {
+                if (dp.totalPoints == 0){
+                    showToast("You don't have any points to distribute")
+                    return@setOnClickListener
+                }
+                constitution++
+                txtConstitution.text = constitution.toString()
+                dp.distributePoints(character, Attributes.CONSTITUTION, constitution)
+                updateRemainingPoints()
             }
         }
 
         btnConstitutionMinus.setOnClickListener {
-            if (constitution in 8..15) {
-                if (constitution - 1 < 8) {
-                    showToast("The value cannot be lower than 8")
-                } else {
-                    val refund = Modifiers.modifierCost(constitution)
-                    constitution--
-                    txtConstitution.text = constitution.toString()
-                    dp.distributePoints(character, dp.verifyChoice(2), constitution)
-                    dp.totalPoints += refund
-                    updateRemainingPoints()
-                }
+            if (constitution - 1 !in 8..15) {
+                verifyIfValueIsLowerThanEight(constitution - 1)
             } else {
-                showToast("The value cannot be lower than 8")
+                dp.refundPoints(character, Attributes.CONSTITUTION, constitution)
+                constitution--
+                txtConstitution.text = constitution.toString()
+                updateRemainingPoints()
+            }
+        }
+
+        //Botões de inteligência
+        btnIntelligencePlus.setOnClickListener {
+            if (intelligence + 1 !in 8..15) {
+                verifyIfValueIsLowerThanEight(intelligence + 1)
+            } else {
+                if (dp.totalPoints == 0){
+                    showToast("You don't have any points to distribute")
+                    return@setOnClickListener
+                }
+                intelligence++
+                txtIntelligence.text = intelligence.toString()
+                dp.distributePoints(character, Attributes.INTELLIGENCE, intelligence)
+                updateRemainingPoints()
             }
         }
 
         btnIntelligenceMinus.setOnClickListener {
-            if (intelligence in 8..15) {
-                if (intelligence - 1 < 8) {
-                    showToast("The value cannot be lower than 8")
-                } else {
-                    val refund = Modifiers.modifierCost(intelligence)
-                    intelligence--
-                    txtIntelligence.text = intelligence.toString()
-                    dp.distributePoints(character, dp.verifyChoice(3), intelligence)
-                    dp.totalPoints += refund
-                    updateRemainingPoints()
-                }
+            if (intelligence - 1 !in 8..15) {
+                verifyIfValueIsLowerThanEight(intelligence - 1)
+            }else{
+                dp.refundPoints(character, Attributes.INTELLIGENCE, intelligence)
+                intelligence--
+                txtIntelligence.text = intelligence.toString()
+                updateRemainingPoints()
+            }
+        }
 
+        //Botões de sabedoria
+        btnWisdomPlus.setOnClickListener {
+            if (wisdom + 1 !in 8..15) {
+                verifyIfValueIsLowerThanEight(wisdom + 1)
             } else {
-                showToast("The value cannot be lower than 8")
+                if (dp.totalPoints == 0){
+                    showToast("You don't have any points to distribute")
+                    return@setOnClickListener
+                }
+                wisdom++
+                txtWisdom.text = wisdom.toString()
+                dp.distributePoints(character, Attributes.WISDOM, wisdom)
+                updateRemainingPoints()
             }
         }
 
         btnWisdomMinus.setOnClickListener {
-            if (wisdom in 8..15) {
-                if (wisdom - 1 < 8) {
-                    showToast("The value cannot be lower than 8")
-                }else{
-                    val refund = Modifiers.modifierCost(wisdom)
-                    wisdom--
-                    txtWisdom.text = wisdom.toString()
-                    dp.distributePoints(character, dp.verifyChoice(4), wisdom)
-                    dp.totalPoints += refund
-                    updateRemainingPoints()
-                }
+            if (wisdom - 1 !in 8..15) {
+                verifyIfValueIsLowerThanEight(wisdom - 1)
             } else {
-                showToast("The value cannot be lower than 8")
+                dp.refundPoints(character, Attributes.WISDOM, wisdom)
+                wisdom--
+                txtWisdom.text = wisdom.toString()
+                updateRemainingPoints()
+            }
+        }
+
+        //Botões de carisma
+        btnCharismaPlus.setOnClickListener {
+            if (charisma + 1 !in 8..15) {
+                verifyIfValueIsLowerThanEight(charisma + 1)
+            } else {
+                if (dp.totalPoints == 0){
+                    showToast("You don't have any points to distribute")
+                    return@setOnClickListener
+                }
+                charisma++
+                txtCharisma.text = charisma.toString()
+                dp.distributePoints(character, Attributes.CHARISMA, charisma)
+                updateRemainingPoints()
             }
         }
 
         btnCharismaMinus.setOnClickListener {
-            if (charisma in 8..15) {
-                if (charisma - 1 < 8) {
-                    showToast("The value cannot be lower than 8")
-                }
-                else{
-                    val refund = Modifiers.modifierCost(charisma)
-                    charisma--
-                    txtCharisma.text = charisma.toString()
-                    dp.distributePoints(character, dp.verifyChoice(5), charisma)
-                    dp.totalPoints += refund
-                    updateRemainingPoints()
-                }
-            } else {
-                showToast("The value cannot be lower than 8")
+            if (charisma - 1 !in 8..15) {
+                verifyIfValueIsLowerThanEight(charisma - 1)
+            }else{
+                dp.refundPoints(character, Attributes.CHARISMA, charisma)
+                charisma--
+                txtCharisma.text = charisma.toString()
+                updateRemainingPoints()
             }
         }
+
+
 
         // Botão de finalizar
         val btnFinish = findViewById<Button>(R.id.createMyCharacter)
         btnFinish.setOnClickListener {
+            if (dp.totalPoints != 0) {
+                showToast("You still have points to distribute")
+                return@setOnClickListener
+            }
+            CharacterHolder.character = character
             val intent = Intent(this, ResumeActivity::class.java)
-            intent.putExtra("character", MyCharacter(character))
+            intent.putExtra("characterClass", characterClass)
             startActivity(intent)
         }
     }
@@ -291,5 +253,13 @@ class SecondActivity : ComponentActivity() {
     private fun updateRemainingPoints() {
         val remainingPointsTextView = findViewById<TextView>(R.id.remainingPoints)
         remainingPointsTextView.text = "Remaining points: ${dp.totalPoints}"
+    }
+
+    private fun verifyIfValueIsLowerThanEight(value: Int) {
+        if (value < 8) {
+            Toast.makeText(this, "Value cannot be lower than 8", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(this, "Value cannot be higher than 15", Toast.LENGTH_SHORT).show()
+        }
     }
 }

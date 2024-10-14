@@ -12,33 +12,36 @@
         android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/tv_characterName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="#e6e6e6"
-            android:hint="Nome"
+            android:hint="@string/nome"
             android:padding="8dp" />
 
 
         <TextView
+            android:id="@+id/tv_characterBreed"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_weight="1"
             android:background="#e6e6e6"
-            android:hint="Raça"
+            android:hint="@string/raca"
             android:padding="8dp" />
 
     </LinearLayout>
 
     <TextView
+        android:id="@+id/tv_lifespan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:background="#e6e6e6"
         android:gravity="center"
         android:padding="8dp"
-        android:text="Vida total" />
+        android:text="@string/vida_total" />
     <!-- TextView para exibir o valor de 'Vida total' do personagem, centralizado e com fundo cinza claro. -->
 
     <LinearLayout
@@ -50,12 +53,13 @@
         <!-- Este layout contém a seção de classe e atributos do personagem, com um fundo cinza claro e padding. -->
 
         <TextView
+            android:id="@+id/tv_class"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:background="#d9534f"
             android:padding="8dp"
-            android:text="Classe" />
+            android:text="@string/classe" />
         <!-- TextView para exibir o título 'Classe', destacado com um fundo vermelho. -->
 
         <LinearLayout
@@ -83,20 +87,24 @@
                     android:textColor="@color/black" />
                 <!-- TextView para exibir o nome do atributo 'Força'. -->
 
-                <View
+                <TextView
+                    android:id="@+id/tv_strength_value"
                     android:layout_width="0dp"
                     android:layout_height="20dp"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:background="@color/aquamarine" />
+                    android:background="@color/aquamarine"
+                    android:textAlignment="center" />
                 <!-- View representando a barra de progresso do atributo, preenchida com uma cor específica. -->
 
-                <View
+                <TextView
+                    android:id="@+id/tv_strength_modifier"
                     android:layout_width="0dp"
                     android:layout_height="20dp"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:background="@color/peach" />
+                    android:background="@color/peach"
+                    android:textAlignment="center" />
                 <!-- View representando a barra de progresso do atributo, com uma cor diferente para indicar o valor restante. -->
             </LinearLayout>
 
@@ -119,19 +127,23 @@
                     android:textAlignment="center"
                     android:textColor="@color/black" />
 
-                <View
+                <TextView
+                    android:id="@+id/tv_dexterity_value"
                     android:layout_width="0dp"
                     android:layout_height="20dp"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:background="@color/aquamarine" />
+                    android:background="@color/aquamarine"
+                    android:textAlignment="center" />
 
-                <View
+                <TextView
+                    android:id="@+id/tv_dexterity_modifier"
                     android:layout_width="0dp"
                     android:layout_height="20dp"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:background="@color/peach" />
+                    android:background="@color/peach"
+                    android:textAlignment="center" />
             </LinearLayout>
 
             <!-- Atributo Sabedoria -->
@@ -151,19 +163,23 @@
                     android:textAlignment="center"
                     android:textColor="@color/black" />
 
-                <View
+                <TextView
+                    android:id="@+id/tv_wisdom_value"
                     android:layout_width="0dp"
                     android:layout_height="20dp"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:background="@color/aquamarine" />
+                    android:background="@color/aquamarine"
+                    android:textAlignment="center" />
 
-                <View
+                <TextView
+                    android:id="@+id/tv_wisdom_modifier"
                     android:layout_width="0dp"
                     android:layout_height="20dp"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:background="@color/peach" />
+                    android:background="@color/peach"
+                    android:textAlignment="center" />
             </LinearLayout>
 
             <!--            Intelligence-->
@@ -185,19 +201,23 @@
                     android:textColor="@color/black" />
 
 
-                <View
+                <TextView
+                    android:id="@+id/tv_intelligence_value"
                     android:layout_width="0dp"
                     android:layout_height="20dp"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:background="@color/aquamarine" />
+                    android:background="@color/aquamarine"
+                    android:textAlignment="center" />
 
-                <View
+                <TextView
+                    android:id="@+id/tv_intelligence_modifier"
                     android:layout_width="0dp"
                     android:layout_height="20dp"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:background="@color/peach" />
+                    android:background="@color/peach"
+                    android:textAlignment="center" />
             </LinearLayout>
 
             <!--            constitution-->
@@ -217,19 +237,23 @@
                     android:textAlignment="center"
                     android:textColor="@color/black" />
 
-                <View
+                <TextView
+                    android:id="@+id/tv_constitution_value"
                     android:layout_width="0dp"
                     android:layout_height="20dp"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:background="@color/aquamarine" />
+                    android:background="@color/aquamarine"
+                    android:textAlignment="center" />
 
-                <View
+                <TextView
+                    android:id="@+id/tv_constitution_modifier"
                     android:layout_width="0dp"
                     android:layout_height="20dp"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:background="@color/peach" />
+                    android:background="@color/peach"
+                    android:textAlignment="center" />
             </LinearLayout>
 
             <!--            Charisma-->
@@ -250,30 +274,35 @@
                     android:textAlignment="center"
                     android:textColor="@color/black" />
 
-                <View
+                <TextView
+                    android:id="@+id/tv_charisma_value"
                     android:layout_width="0dp"
                     android:layout_height="20dp"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:background="@color/aquamarine" />
+                    android:background="@color/aquamarine"
+                    android:textAlignment="center" />
 
-                <View
+                <TextView
+                    android:id="@+id/tv_charisma_modifier"
                     android:layout_width="0dp"
                     android:layout_height="20dp"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:background="@color/peach" />
+                    android:background="@color/peach"
+                    android:textAlignment="center" />
             </LinearLayout>
 
         </LinearLayout>
 
         <Button
-            android:layout_marginTop="20sp"
+            android:id="@+id/btn_finish"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Finish"
+            android:layout_gravity="center"
+            android:layout_marginTop="20sp"
             android:backgroundTint="@color/purple_200"
-            android:layout_gravity="center"/>
+            android:text="@string/finish" />
 
     </LinearLayout>
 
