@@ -1,6 +1,7 @@
 package com.example.rpg
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -28,6 +29,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.core.content.ContextCompat.startActivity
 import com.example.rpg.data.CharacterEntity
 
 class NovaActivity : ComponentActivity() {
@@ -111,14 +113,26 @@ fun CharacterList(users: MutableList<CharacterEntity>, onDelete: (CharacterEntit
                             Toast.makeText(context, "Personagem excluído", Toast.LENGTH_SHORT).show()
                             (context as NovaActivity).recreate()
                         },
-                        modifier = Modifier.align(Alignment.End),
+                        modifier = Modifier.align(Alignment.CenterHorizontally),
                         colors = ButtonDefaults.buttonColors(
                             containerColor = MaterialTheme.colorScheme.error,
                         )
                     ) {
-                        Text(text = "Excluir", color = Color.White)
+                        Text("Excluir", color = Color.White)
                     }
                 }
+            }
+        }
+        item {
+            Button(
+                onClick = {
+                    startActivity(context, Intent(context, MainActivity::class.java), null)
+                },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.secondary,
+                )
+            ) {
+                Text("Novo Personagem", color = Color.White)
             }
         }
     }
