@@ -1,5 +1,6 @@
 package com.example.rpg
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -83,6 +84,7 @@ class ResumeActivity : ComponentActivity() {
             val btnFinish = findViewById<Button>(R.id.btn_finish)
             btnFinish.setOnClickListener {
                 showToast("Seu personagem foi criado com sucesso!")
+                startActivity(Intent(this, NovaActivity::class.java))
             }
 
         }
