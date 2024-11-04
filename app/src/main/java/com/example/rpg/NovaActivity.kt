@@ -3,6 +3,7 @@ package com.example.rpg
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -33,10 +34,10 @@ import androidx.core.content.ContextCompat.startActivity
 import com.example.rpg.data.CharacterEntity
 
 class NovaActivity : ComponentActivity() {
+    private var users = mutableListOf<CharacterEntity>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val users = (application as AppApplication).db.characterDao().getAll()
-
+        users = (application as AppApplication).db.characterDao().getAll()
 
         setContent {
             MaterialTheme {
@@ -52,10 +53,45 @@ class NovaActivity : ComponentActivity() {
         }
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+            val characterId = data?.getIntExtra("characterId", -1)
+            val name = data?.getStringExtra("name")
+            val strength = data?.getIntExtra("strength", 8)
+            val dexterity = data?.getIntExtra("dexterity", 8)
+            val constitution = data?.getIntExtra("constitution", 8)
+            val intelligence = data?.getIntExtra("intelligence", 8)
+            val wisdom = data?.getIntExtra("wisdom", 8)
+            val charisma = data?.getIntExtra("charisma", 8)
+
+            if (characterId != null && characterId != -1) {
+                val characterIDX = users.indexOfFirst { it.id == characterId }
+                if (characterIDX != -1) {
+                    val updatedCharacter = users[characterIDX].copy(
+                        name = name ?: users[characterIDX].name,
+                        strength = strength ?: users[characterIDX].strength,
+                        dexterity = dexterity ?: users[characterIDX].dexterity,
+                        constitution = constitution ?: users[characterIDX].constitution,
+                        intelligence = intelligence ?: users[characterIDX].intelligence,
+                        wisdom = wisdom ?: users[characterIDX].wisdom,
+                        charisma = charisma ?: users[characterIDX].charisma
+                    )
+                    users[characterIDX] = updatedCharacter
+                }
+            }
+
+        }
+    }
+
 }
 
 @Composable
-fun CharacterList(users: MutableList<CharacterEntity>, onDelete: (CharacterEntity) -> Unit, context: Context) {
+fun CharacterList(
+    users: MutableList<CharacterEntity>,
+    onDelete: (CharacterEntity) -> Unit,
+    context: Context
+) {
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -110,7 +146,8 @@ fun CharacterList(users: MutableList<CharacterEntity>, onDelete: (CharacterEntit
                     Button(
                         onClick = {
                             onDelete(character)
-                            Toast.makeText(context, "Personagem excluído", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, "Personagem excluído", Toast.LENGTH_SHORT)
+                                .show()
                             (context as NovaActivity).recreate()
                         },
                         modifier = Modifier.align(Alignment.CenterHorizontally),
@@ -119,6 +156,19 @@ fun CharacterList(users: MutableList<CharacterEntity>, onDelete: (CharacterEntit
                         )
                     ) {
                         Text("Excluir", color = Color.White)
+                    }
+                    Button(
+                        onClick = {
+                            val intent = Intent(context, UpdateCharacterActivity::class.java)
+                            intent.putExtra("characterId", character.id)
+                            (context as NovaActivity).startActivityForResult(intent, 1)
+                        },
+                        modifier = Modifier.align(Alignment.CenterHorizontally),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = MaterialTheme.colorScheme.secondary,
+                        )
+                    ) {
+                        Text("Editar", color = Color.White)
                     }
                 }
             }

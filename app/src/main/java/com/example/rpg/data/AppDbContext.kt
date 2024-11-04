@@ -13,7 +13,6 @@ abstract class AppDbContext : RoomDatabase() {
 
     companion object {
 
-
         fun getDatabase(application: Application): AppDbContext {
             return Room.databaseBuilder(
                 application,

@@ -13,13 +13,16 @@ interface CharacterDAO {
     fun insert(character: CharacterEntity)
 
     @Update
-    suspend fun update(character: CharacterEntity)
+    fun update(character: CharacterEntity)
 
     @Delete
     fun delete(character: CharacterEntity)
 
     @Query("SELECT * FROM character")
     fun getAll(): MutableList<CharacterEntity>
+
+    @Query("SELECT * FROM character WHERE id = :characterId")
+    fun getCharacterById(characterId: Int): CharacterEntity?
 
 
 }

@@ -30,6 +30,8 @@
 
         <activity android:name=".NovaActivity"/>
 
+        <activity android:name=".UpdateCharacterActivity"/>
+
     </application>
 
 </manifest>
