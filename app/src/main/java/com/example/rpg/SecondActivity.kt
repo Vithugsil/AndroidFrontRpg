@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.ComponentActivity
+import com.example.rpg.data.CharacterEntity
 import org.example.builder.Characterbuilder
 import org.example.enums.Attributes
 import org.example.entities.DistributionPoints as dp
@@ -239,6 +240,21 @@ class SecondActivity : ComponentActivity() {
                 showToast("You still have points to distribute")
                 return@setOnClickListener
             }
+
+            val characterEntity = CharacterEntity(
+                id = null,
+                name = character.name,
+                breed = character.breed::class.simpleName ?: "Unknown",
+                classCharacter = characterClass,
+                strength = character.skills.strength,
+                dexterity = character.skills.dexterity,
+                constitution = character.skills.constitution,
+                intelligence = character.skills.intelligence,
+                wisdom = character.skills.wisdom,
+                charisma = character.skills.charisma,
+            )
+
+            (application as AppApplication).db.characterDao().insert(characterEntity)
             CharacterHolder.character = character
             val intent = Intent(this, ResumeActivity::class.java)
             intent.putExtra("characterClass", characterClass)
